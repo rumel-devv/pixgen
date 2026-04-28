@@ -1,9 +1,9 @@
 import React from 'react';
 import PhotoCrad from './PhotoCrad';
+import { phtosData } from '@/lib/data';
 
 const TopGen = async () => {
-    const res = await fetch('https://pixgen-zeta.vercel.app/data.json')
-    const data = await res.json()
+     const data = await phtosData()
     const photos = data.slice(0,9)
     return (
         <div className='w-9/12 mx-auto my-5'>
