@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { authClient } from "@/lib/auth-client";
-import { Avatar } from "@heroui/react";
+import { Avatar, Spinner } from "@heroui/react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -13,12 +13,20 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const userData = authClient.useSession();
-  const user = userData.data?.user;
-  console.log(user);
-   const handleLogout = async () => {
+  const { data, isLoading } = authClient.useSession();
+  const user = data?.user;
+  
+
+  if(isLoading){
+    <div className="flex flex-col items-center gap-2">
+        <Spinner color="current" />
+        <span className="text-xs text-muted">Current</span>
+      </div>
+  }
+
+  const handleLogout = async () => {
     await authClient.signOut();
-   }
+  };
   return (
     <nav className="w-full md:w-10/12 mx-auto py-4 px-2">
       <div className="flex justify-between items-center">
@@ -58,11 +66,18 @@ const Navbar = () => {
         {user && (
           <div className="flex gap-2">
             <Avatar>
-              <Avatar.Image alt="John Doe" src={user?.image} referrerPolicy="no-referrer" />
+              <Avatar.Image
+                alt="John Doe"
+                src={user?.image}
+                referrerPolicy="no-referrer"
+              />
               <Avatar.Fallback>JD</Avatar.Fallback>
             </Avatar>
 
-            <button onClick={handleLogout} className="px-4 py-1.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition ">
+            <button
+              onClick={handleLogout}
+              className="px-4 py-1.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition "
+            >
               Logout
             </button>
           </div>
