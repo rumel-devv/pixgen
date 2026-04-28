@@ -19,7 +19,7 @@ const Navbar = () => {
             pixgen.
           </Link>
         </div>
-        <ul className='hidden md:flex gap-5 text-sm font-semibold uppercase'>
+        <ul className='hidden md:flex gap-5 text-sm font-normal uppercase'>
           {navLinks.map((link, index) => (
             <li key={index}>
               <Link href={link.href} className='hover:text-purple-600 transition'>
