@@ -1,4 +1,3 @@
-export const dynamic = "force-dynamic";
 import { phtosData } from '@/lib/data';
 import PhotoCard from '@/components/PhotoCrad';
 
