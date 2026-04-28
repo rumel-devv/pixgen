@@ -13,7 +13,7 @@ const PhotosDetailsPage = async ({ params }) => {
       
       <div className="grid md:grid-cols-2 gap-10 items-start">
         
-        <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden">
+        <div className="relative w-full h-100 md:h-125 rounded-2xl overflow-hidden">
           <Image
             src={photo.imageUrl}
             alt={photo.title}
