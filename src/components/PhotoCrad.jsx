@@ -26,8 +26,9 @@ const PhotoCard = ({ photo }) => {
           </span>
         </div>
 
-        <div className="flex justify-between text-sm text-gray-200">
-          <span className="flex items-center gap-1 text-nd">
+        <div className="flex justify-between text-sm  text-gray-200">
+          <span className="flex items-center gap-1 text-md
+         ">
             {" "}
             <FaHeart /> {photo.likes}
           </span>
@@ -37,7 +38,7 @@ const PhotoCard = ({ photo }) => {
           </span>
         </div>
 
-        <Link href={`/photos/${photo.id}`}>
+        <Link href={`/allphotos/${photo.id}`}>
           <button className="w-full mt-2 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition text-sm font-medium">
             View Details
           </button>
