@@ -10,9 +10,9 @@ import {
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
 
-const SignUpPage = () => {
 
-    const router = useRouter()
+const SignUpPage = () => {
+  const router = useRouter();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -26,14 +26,16 @@ const SignUpPage = () => {
       password: password,
       image: image,
     });
-    if(error){
-        alert(error.message)
+    if (error) {
+      alert(error.message);
     }
-    if(data){
-        alert('Signup Successfull')
-        router.push('/')
+    if (data) {
+      alert("Signup Successfull");
+      router.push("/");
     }
   };
+         
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-950 px-4">

@@ -1,6 +1,9 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { authClient } from "@/lib/auth-client";
+import { Avatar } from "@heroui/react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -10,6 +13,12 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const userData = authClient.useSession();
+  const user = userData.data?.user;
+  console.log(user);
+   const handleLogout = async () => {
+    await authClient.signOut();
+   }
   return (
     <nav className="w-full md:w-10/12 mx-auto py-4 px-2">
       <div className="flex justify-between items-center">
@@ -31,18 +40,33 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-       <div className="space-x-3">
-        <Link href='/signup'>
-          <button className="px-4 py-1.5  bg-transparent border border-purple-600 text-black rounded-lg hover:bg-purple-700 transition ">
-            SignUp
-          </button>
-        </Link>
-        <Link href='/login'>
-          <button className="px-4 py-1.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition ">
-            Login
-          </button>
-        </Link>
-        </div>
+
+        {!user && (
+          <div className="space-x-3">
+            <Link href="/signup">
+              <button className="px-4 py-1.5  bg-transparent border border-purple-600 text-black rounded-lg hover:bg-purple-700 transition ">
+                SignUp
+              </button>
+            </Link>
+            <Link href="/login">
+              <button className="px-4 py-1.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition ">
+                Login
+              </button>
+            </Link>
+          </div>
+        )}
+        {user && (
+          <div className="flex gap-2">
+            <Avatar>
+              <Avatar.Image alt="John Doe" src={user?.image} referrerPolicy="no-referrer" />
+              <Avatar.Fallback>JD</Avatar.Fallback>
+            </Avatar>
+
+            <button onClick={handleLogout} className="px-4 py-1.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition ">
+              Logout
+            </button>
+          </div>
+        )}
       </div>
     </nav>
   );
