@@ -7,12 +7,14 @@ import Image from "next/image";
 const ProfilePgae = () => {
   const { data, isLoading } = authClient.useSession();
   const user = data?.user;
-  if (isLoading) {
-    <div className="flex flex-col items-center gap-2">
+if (isLoading) {
+  return (
+    <div className="flex flex-col items-center gap-2 min-h-screen justify-center">
       <Spinner color="current" />
-      <span className="text-xs text-muted">Current</span>
-    </div>;
-  }
+      <span className="text-xs text-muted">Loading...</span>
+    </div>
+  );
+}
 
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center px-4">
@@ -33,7 +35,7 @@ const ProfilePgae = () => {
 
         <div className="mt-6 space-y-2 text-sm text-gray-300">
           <p>
-            <span className="text-gray-500">User ID:</span> {user.id}
+            <span className="text-gray-500">User ID:</span> {user?.id}
           </p>
         </div>
 
