@@ -26,10 +26,10 @@ const ProfilePgae = () => {
         />
 
         <h2 className="text-xl font-bold text-white">
-          {user.name || "No Name"}
+          {user?.name}
         </h2>
 
-        <p className="text-gray-400 text-sm mt-1">{user.email}</p>
+        <p className="text-gray-400 text-sm mt-1">{user?.email}</p>
 
         <div className="mt-6 space-y-2 text-sm text-gray-300">
           <p>
