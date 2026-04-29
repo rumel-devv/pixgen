@@ -8,6 +8,7 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import Link from "next/link";
 import { FaGoogle } from "react-icons/fa";
 
 const SignUpPage = () => {
@@ -90,6 +91,13 @@ const SignUpPage = () => {
             <Button onClick={handleGoogleLogin} type="submit" className="w-full my-4 bg-white text-black">
             <FaGoogle/>  Login with google
             </Button>
+        </div>
+        <div>
+            <h1 className="text-center text-white">Do not have a account ?
+                 <Link href='/signup'>
+                 <span className="text-purple-400 ml-1">Register</span>
+                 </Link>
+            </h1>
         </div>
       </div>
     </div>
