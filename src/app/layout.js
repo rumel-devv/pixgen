@@ -10,6 +10,9 @@ const fontOutfit = Outfit({
 export const metadata = {
   title: "PixGen",
   description: "a mordern place to generate image",
+    icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {
